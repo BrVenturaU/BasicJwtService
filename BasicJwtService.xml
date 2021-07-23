@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BasicJwtService</name>
+    </assembly>
+    <members>
+        <member name="T:BasicJwtService.Extensions.ClaimExtensions">
+            <summary>
+            Extension class for the token claims.
+            </summary>
+        </member>
+        <member name="M:BasicJwtService.Extensions.ClaimExtensions.AddDefaultClaims(System.Collections.Generic.List{System.Security.Claims.Claim})">
+            <summary>
+            Add default claims such as the JTI claim.
+            </summary>
+            <param name="claims">The actual list of claims.</param>
+            <returns></returns>
+        </member>
+        <member name="T:BasicJwtService.JwtServiceConfiguration">
+            <summary>
+            Extension class for the token's services that must be call in the IoC.
+            </summary>
+        </member>
+        <member name="M:BasicJwtService.JwtServiceConfiguration.ConfigureTokenServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            IServiceCollection extension method that configures the token's services.
+            </summary>
+            <param name="services">IServiceCollection instance.</param>
+            <param name="configuration">IConfiguration instance.</param>
+            <param name="secret">The token's secret/private key.</param>
+            <returns>The same IServiceCollection instance with the token's services configured.</returns>
+        </member>
+        <member name="T:BasicJwtService.Services.ITokenService">
+            <summary>
+            This interface enable you to consume the TokenService injected in the IoC.
+            </summary>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GenerateToken(System.Collections.Generic.List{System.Security.Claims.Claim})">
+            <summary>
+            This method allows you to create a JWT token and adds the claims you provide.
+            </summary>
+            <param name="claims">The claims for the token's payload.</param>
+            <returns>A string token.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GetToken">
+            <summary>
+            Allow to get the token from the request header (Authorization Header)
+            </summary>
+            <returns>The JWT token.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GetTokenClaims(System.String)">
+            <summary>
+            This method reads the token to get the claims.
+            </summary>
+            <param name="token">The JWT token to get the claims.</param>
+            <returns>A list of token claims.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GetIdentityTokenClaims">
+            <summary>
+            Reads the user identity of the HttpContext to get the claims.
+            </summary>
+            <returns>A list of user claims (null if token is expired).</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GetUserTokenClaims">
+            <summary>
+            Reads the user of the HttpContext to get the claims.
+            </summary>
+            <returns>A list of user claims (null if token is expired).</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.ITokenService.GetTokenClaimValue(System.String,System.String)">
+            <summary>
+            Get a claim value from the list of claims by the claim name/type.
+            </summary>
+            <param name="claimName">The claim name/type in the token.</param>
+            <param name="token">The token to retrieve the claim value.</param>
+            <returns>The claim value.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GenerateToken(System.Collections.Generic.List{System.Security.Claims.Claim})">
+            <summary>
+            This method allows you to create a JWT token and adds the claims you provide.
+            </summary>
+            <param name="claims">The claims for the token's payload.</param>
+            <returns>A string token.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GetTokenClaims(System.String)">
+            <summary>
+            This method reads the token to get the claims.
+            </summary>
+            <param name="token">The JWT token to get the claims.</param>
+            <returns>A list of token claims.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GetIdentityTokenClaims">
+            <summary>
+            Reads the user identity of the HttpContext to get the claims.
+            </summary>
+            <returns>A list of user claims (null if token is expired).</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GetUserTokenClaims">
+            <summary>
+            Reads the user of the HttpContext to get the claims.
+            </summary>
+            <returns>A list of user claims (null if token is expired).</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GetTokenClaimValue(System.String,System.String)">
+            <summary>
+            Get a claim value from the list of claims by the claim name/type.
+            </summary>
+            <param name="claimName">The claim name/type in the token.</param>
+            <param name="token">The token to retrieve the claim value.</param>
+            <returns>The claim value.</returns>
+        </member>
+        <member name="M:BasicJwtService.Services.TokenService.GetToken">
+            <summary>
+            Allow to get the token from the request header (Authorization Header)
+            </summary>
+            <returns>The JWT token.</returns>
+        </member>
+        <member name="T:BasicJwtService.Settings.JwtSettings">
+            <summary>
+            The token configuration properties obtained from the project configurations (appsettings.json).
+            </summary>
+        </member>
+    </members>
+</doc>
